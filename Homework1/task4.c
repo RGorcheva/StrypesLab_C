@@ -10,21 +10,21 @@ void printPermissions(int n)
     int x = 1;
     int w = 1 << 1;
     int r = 1 << 2;
-    int others = (n/0100) % 010;
+    int user = (n/0100) % 010;
     int group = (n/010) % 010;
-    int user = n % 010;
-    printf("others:\t");
-    (others & r) ? printf("R") : printf("-");
-    (others & w) ? printf("W") : printf("-");
-    (others & x) ? printf("X") : printf("-");
+    int others = n % 010;
+    printf("user:\t");
+    (user & r) ? printf("R") : printf("-");
+    (user & w) ? printf("W") : printf("-");
+    (user & x) ? printf("X") : printf("-");
     printf("\ngroup:\t");
     (group & r) ? printf("R") : printf("-");
     (group & w) ? printf("W") : printf("-");
     (group & x) ? printf("X") : printf("-");
-    printf("\nuser:\t");
-    (user & r) ? printf("R") : printf("-");
-    (user & w) ? printf("W") : printf("-");
-    (user & x) ? printf("X") : printf("-");
+    printf("\nothers:\t");
+    (others & r) ? printf("R") : printf("-");
+    (others & w) ? printf("W") : printf("-");
+    (others & x) ? printf("X") : printf("-");
     printf("\n");
 }
 
