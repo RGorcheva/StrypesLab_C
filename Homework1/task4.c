@@ -35,7 +35,7 @@ int main(void)
 	printf("Enter octal number presenting permittions: ");
     	isScanned = scanf("%o", &access);
     	while(getchar() != '\n');
-   	 while(!isScanned)
+   	while(!isScanned)
 	{
 		printf("The entrance must be octal number!\nEnter octal number: ");
 		isScanned = scanf("%o", &access);
