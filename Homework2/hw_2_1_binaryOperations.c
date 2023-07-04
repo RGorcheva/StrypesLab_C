@@ -60,13 +60,13 @@ char numElements(uint64_t set);
 
 void printBinary(uint64_t n)
 {
-   uint64_t mask = (1ULL << 63);
-   for (uint64_t i = 0; i < 64; i++)
-   {
-       (n & mask) ? printf("1") : printf("0");
-       mask >>= 1ULL;
-   }
-   printf("\n");
+	uint64_t mask = (1ULL << 63);
+   	for (uint64_t i = 0; i < 64; i++)
+   	{
+       		(n & mask) ? printf("1") : printf("0");
+       		mask >>= 1ULL;
+   	}
+   	printf("\n");
 }
 
 bool my_isEmpty(uint64_t set)
