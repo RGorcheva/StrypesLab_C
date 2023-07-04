@@ -26,7 +26,7 @@ int main(void)
 	{
 		printf("The entrance must be number!\nEnter number: ");
 		isScanned = scanf("%lf", &pi);
-        while(getchar() != '\n');
+        	while(getchar() != '\n');
 	}
     	isEqualToPI(pi) ? printf("Yes\n") : printf("No\n");
     	return 0;
