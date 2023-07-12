@@ -53,5 +53,5 @@ int main(void)
 	    }
 	}
 	printf("Sum of array digits: %u\n", sumArrayDigits(arr, num));
-    return 0;
+   	return 0;
 }

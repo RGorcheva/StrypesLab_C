@@ -37,21 +37,21 @@ int main(int argc, char* argv[])
 		printf("Not enough arguments!\n");
 	}
 	
-    double x1 = 0.0;
-    double x2 = 0.0;
-    double a = 0.0;
-    double b = 0.0;
+    	double x1 = 0.0;
+    	double x2 = 0.0;
+    	double a = 0.0;
+    	double b = 0.0;
 	double c = 0.0;
 	
 	a = atol(argv[1]);
 	b = atol(argv[2]);
 	c = atol(argv[3]);
 	
-    if(!quadEq(a, b, c, &x1, &x2))
-    {
+    	if(!quadEq(a, b, c, &x1, &x2))
+    	{
 		printf("The roots of equasion (%.2lf)*x^2 + (%.2lf)*x + (%.2lf) = 0 are:\n", a, b, c);
-        printf("x1 = %.2lf\n", x1);
-        printf("x2 = %.2lf\n", x2);
-    }
-    return 0;
+        	printf("x1 = %.2lf\n", x1);
+        	printf("x2 = %.2lf\n", x2);
+    	}
+    	return 0;
 }

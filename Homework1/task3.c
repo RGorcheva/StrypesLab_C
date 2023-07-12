@@ -12,22 +12,22 @@
 
 int isEqualToPI(double a)
 {
-    return fabs(a - PI) <= EPS;
+	return fabs(a - PI) <= EPS;
 }
 
 int main(void)
 {
-    double pi = 0;
-    int isScanned = 0;
+    	double pi = 0;
+    	int isScanned = 0;
 	printf("Enter approximation of PI: ");
-    isScanned = scanf("%lf", &pi);
-    while(getchar() != '\n');
-    while(!isScanned)
+    	isScanned = scanf("%lf", &pi);
+   	while(getchar() != '\n');
+   	while(!isScanned)
 	{
 		printf("The entrance must be number!\nEnter number: ");
 		isScanned = scanf("%lf", &pi);
-        while(getchar() != '\n');
+        	while(getchar() != '\n');
 	}
-    isEqualToPI(pi) ? printf("Yes\n") : printf("No\n");
-    return 0;
+    	isEqualToPI(pi) ? printf("Yes\n") : printf("No\n");
+    	return 0;
 }

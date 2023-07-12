@@ -9,18 +9,18 @@
 
 int main(void)
 {
-    int n = 0;
-    int isScanned = 0;
-    printf("Enter an integer number in the interval [-100000; 1000000]: ");
-    isScanned = scanf("%d", &n);
-    while(getchar() != '\n');
-    while(!isScanned)
-    {
-        printf("You must enter an integer number in the interval [-100000; 1000000].\nPlease, enter a number: ");
+        int n = 0;
+        int isScanned = 0;
+        printf("Enter an integer number in the interval [-100000; 1000000]: ");
         isScanned = scanf("%d", &n);
         while(getchar() != '\n');
-    }
-    unsigned mask = 1;
-    (n & mask) ? printf("NO\n") : printf("YES\n");
-    return 0;
+        while(!isScanned)
+        {
+            printf("You must enter an integer number in the interval [-100000; 1000000].\nPlease, enter a number: ");
+            isScanned = scanf("%d", &n);
+            while(getchar() != '\n');
+        }
+        unsigned mask = 1;
+        (n & mask) ? printf("NO\n") : printf("YES\n");
+        return 0;
 }
