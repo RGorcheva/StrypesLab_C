@@ -1,0 +1,8 @@
+gcc -E main.c -o main.i          // Preprocessor
+gcc -S main.i -o main.s          // Assembler
+gcc -c main.s -o main.o          // Object files
+gcc -E car.c -o car.i            
+gcc -S car.i -o car.s
+gcc -c car.s -o car.o
+gcc main.o car.o car.h -o task2  // Linker to exe
+./task2                          // Execute
