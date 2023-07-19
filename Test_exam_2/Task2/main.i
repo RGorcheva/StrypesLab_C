@@ -1,15 +1,24 @@
 # 0 "main.c"
+# 1 "/media/sf_SharedWithUbuntu/StrypesLab_C/Test_exam_2//"
 # 0 "<built-in>"
 # 0 "<command-line>"
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 0 "<command-line>" 2
 # 1 "main.c"
-# 1 "car.h" 1
+# 1 "comparators.h" 1
+# 10 "comparators.h"
+typedef int (*comp)(const void*,const void*);
 
-
-
-# 1 "/usr/include/inttypes.h" 1 3 4
-# 25 "/usr/include/inttypes.h" 3 4
+double randReal(double min, double max);
+int comparator1(const void* a, const void* b);
+int comparator2(const void* a, const void* b);
+int comparator3(const void* a, const void* b);
+int comparator4(const void* a, const void* b);
+# 2 "main.c" 2
+# 1 "/usr/include/stdio.h" 1 3 4
+# 27 "/usr/include/stdio.h" 3 4
+# 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
+# 33 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 3 4
 # 1 "/usr/include/features.h" 1 3 4
 # 392 "/usr/include/features.h" 3 4
 # 1 "/usr/include/features-time64.h" 1 3 4
@@ -36,14 +45,26 @@
 # 1 "/usr/include/x86_64-linux-gnu/gnu/stubs-64.h" 1 3 4
 # 11 "/usr/include/x86_64-linux-gnu/gnu/stubs.h" 2 3 4
 # 511 "/usr/include/features.h" 2 3 4
-# 26 "/usr/include/inttypes.h" 2 3 4
+# 34 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 2 3 4
+# 28 "/usr/include/stdio.h" 2 3 4
 
-# 1 "/usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h" 1 3 4
-# 9 "/usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h" 3 4
-# 1 "/usr/include/stdint.h" 1 3 4
-# 26 "/usr/include/stdint.h" 3 4
-# 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
-# 27 "/usr/include/stdint.h" 2 3 4
+
+
+
+
+# 1 "/usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h" 1 3 4
+# 209 "/usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h" 3 4
+
+# 209 "/usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h" 3 4
+typedef long unsigned int size_t;
+# 34 "/usr/include/stdio.h" 2 3 4
+
+
+# 1 "/usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h" 1 3 4
+# 40 "/usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h" 3 4
+typedef __builtin_va_list __gnuc_va_list;
+# 37 "/usr/include/stdio.h" 2 3 4
+
 # 1 "/usr/include/x86_64-linux-gnu/bits/types.h" 1 3 4
 # 27 "/usr/include/x86_64-linux-gnu/bits/types.h" 3 4
 # 1 "/usr/include/x86_64-linux-gnu/bits/wordsize.h" 1 3 4
@@ -55,8 +76,6 @@
 # 29 "/usr/include/x86_64-linux-gnu/bits/types.h" 2 3 4
 
 
-
-# 31 "/usr/include/x86_64-linux-gnu/bits/types.h" 3 4
 typedef unsigned char __u_char;
 typedef unsigned short int __u_short;
 typedef unsigned int __u_int;
@@ -178,160 +197,7 @@ typedef unsigned int __socklen_t;
 
 
 typedef int __sig_atomic_t;
-# 28 "/usr/include/stdint.h" 2 3 4
-# 1 "/usr/include/x86_64-linux-gnu/bits/wchar.h" 1 3 4
-# 29 "/usr/include/stdint.h" 2 3 4
-# 1 "/usr/include/x86_64-linux-gnu/bits/wordsize.h" 1 3 4
-# 30 "/usr/include/stdint.h" 2 3 4
-
-
-
-
-# 1 "/usr/include/x86_64-linux-gnu/bits/stdint-intn.h" 1 3 4
-# 24 "/usr/include/x86_64-linux-gnu/bits/stdint-intn.h" 3 4
-typedef __int8_t int8_t;
-typedef __int16_t int16_t;
-typedef __int32_t int32_t;
-typedef __int64_t int64_t;
-# 35 "/usr/include/stdint.h" 2 3 4
-
-
-# 1 "/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h" 1 3 4
-# 24 "/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h" 3 4
-typedef __uint8_t uint8_t;
-typedef __uint16_t uint16_t;
-typedef __uint32_t uint32_t;
-typedef __uint64_t uint64_t;
-# 38 "/usr/include/stdint.h" 2 3 4
-
-
-
-
-
-typedef __int_least8_t int_least8_t;
-typedef __int_least16_t int_least16_t;
-typedef __int_least32_t int_least32_t;
-typedef __int_least64_t int_least64_t;
-
-
-typedef __uint_least8_t uint_least8_t;
-typedef __uint_least16_t uint_least16_t;
-typedef __uint_least32_t uint_least32_t;
-typedef __uint_least64_t uint_least64_t;
-
-
-
-
-
-typedef signed char int_fast8_t;
-
-typedef long int int_fast16_t;
-typedef long int int_fast32_t;
-typedef long int int_fast64_t;
-# 71 "/usr/include/stdint.h" 3 4
-typedef unsigned char uint_fast8_t;
-
-typedef unsigned long int uint_fast16_t;
-typedef unsigned long int uint_fast32_t;
-typedef unsigned long int uint_fast64_t;
-# 87 "/usr/include/stdint.h" 3 4
-typedef long int intptr_t;
-
-
-typedef unsigned long int uintptr_t;
-# 101 "/usr/include/stdint.h" 3 4
-typedef __intmax_t intmax_t;
-typedef __uintmax_t uintmax_t;
-# 10 "/usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h" 2 3 4
-# 28 "/usr/include/inttypes.h" 2 3 4
-
-
-
-
-
-
-typedef int __gwchar_t;
-# 266 "/usr/include/inttypes.h" 3 4
-
-
-
-
-
-typedef struct
-  {
-    long int quot;
-    long int rem;
-  } imaxdiv_t;
-# 290 "/usr/include/inttypes.h" 3 4
-extern intmax_t imaxabs (intmax_t __n) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-extern imaxdiv_t imaxdiv (intmax_t __numer, intmax_t __denom)
-      __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-extern intmax_t strtoimax (const char *__restrict __nptr,
-      char **__restrict __endptr, int __base) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern uintmax_t strtoumax (const char *__restrict __nptr,
-       char ** __restrict __endptr, int __base) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern intmax_t wcstoimax (const __gwchar_t *__restrict __nptr,
-      __gwchar_t **__restrict __endptr, int __base)
-     __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern uintmax_t wcstoumax (const __gwchar_t *__restrict __nptr,
-       __gwchar_t ** __restrict __endptr, int __base)
-     __attribute__ ((__nothrow__ , __leaf__));
-
-
-# 5 "car.h" 2
-
-
-# 6 "car.h"
-typedef struct{
- char model[20];
- uint8_t maxSpeed;
- double price;
-}Car;
-
-typedef int(*comp)(const void*, const void*);
-
-int modelAcs(const void* a, const void* b);
-int modelDecs(const void* a, const void* b);
-int speedAcs(const void* a, const void* b);
-int speedDecs(const void* a, const void* b);
-int priceAcs(const void* a, const void* b);
-int priceDecs(const void* a, const void* b);
-
-comp getComparator(int n);
-# 2 "main.c" 2
-# 1 "/usr/include/stdio.h" 1 3 4
-# 27 "/usr/include/stdio.h" 3 4
-# 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
-# 28 "/usr/include/stdio.h" 2 3 4
-
-
-
-
-
-# 1 "/usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h" 1 3 4
-# 209 "/usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h" 3 4
-
-# 209 "/usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h" 3 4
-typedef long unsigned int size_t;
-# 34 "/usr/include/stdio.h" 2 3 4
-
-
-# 1 "/usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h" 1 3 4
-# 40 "/usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h" 3 4
-typedef __builtin_va_list __gnuc_va_list;
-# 37 "/usr/include/stdio.h" 2 3 4
-
-
+# 39 "/usr/include/stdio.h" 2 3 4
 # 1 "/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h" 1 3 4
 
 
@@ -1115,7 +981,13 @@ typedef unsigned int uint;
 
 
 
-
+# 1 "/usr/include/x86_64-linux-gnu/bits/stdint-intn.h" 1 3 4
+# 24 "/usr/include/x86_64-linux-gnu/bits/stdint-intn.h" 3 4
+typedef __int8_t int8_t;
+typedef __int16_t int16_t;
+typedef __int32_t int32_t;
+typedef __int64_t int64_t;
+# 156 "/usr/include/x86_64-linux-gnu/sys/types.h" 2 3 4
 
 
 typedef __uint8_t u_int8_t;
@@ -1964,82 +1836,265 @@ extern int getloadavg (double __loadavg[], int __nelem)
 # 1035 "/usr/include/stdlib.h" 3 4
 
 # 4 "main.c" 2
+# 1 "/usr/include/time.h" 1 3 4
+# 29 "/usr/include/time.h" 3 4
+# 1 "/usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h" 1 3 4
+# 30 "/usr/include/time.h" 2 3 4
 
 
-# 5 "main.c"
-Car carArr[10] =
+
+# 1 "/usr/include/x86_64-linux-gnu/bits/time.h" 1 3 4
+# 34 "/usr/include/time.h" 2 3 4
+
+
+
+
+
+# 1 "/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h" 1 3 4
+
+
+
+
+
+
+struct tm
 {
- {
-  .model = "Mazda2",
-  .maxSpeed = 150,
-  .price = 35000.0
- },
- {
-  .model = "Mazda6",
-  .maxSpeed = 200,
-  .price = 65000.0
- },
- {
-  .model = "Opel corsa",
-  .maxSpeed = 145,
-  .price = 15000.0
- },
- {
-  .model = "Toyota Yaris",
-  .maxSpeed = 180,
-  .price = 12000.0
- },
- {
-  .model = "Renault Laguna",
-  .maxSpeed = 185,
-  .price = 75000.0
- },
- {
-  .model = "Mercedes Benz",
-  .maxSpeed = 215,
-  .price = 100000.0
- },
- {
-  .model = "BMW 3",
-  .maxSpeed = 200,
-  .price = 17000.0
- },
- {
-  .model = "Ferrari",
-  .maxSpeed = 220,
-  .price = 99000.0
- },
- {
-  .model = "Citroen C3",
-  .maxSpeed = 145,
-  .price = 35000.0
- },
- {
-  .model = "Hunday",
-  .maxSpeed = 150,
-  .price = 60000.0
- }
+  int tm_sec;
+  int tm_min;
+  int tm_hour;
+  int tm_mday;
+  int tm_mon;
+  int tm_year;
+  int tm_wday;
+  int tm_yday;
+  int tm_isdst;
+
+
+  long int tm_gmtoff;
+  const char *tm_zone;
+
+
+
+
+};
+# 40 "/usr/include/time.h" 2 3 4
+# 48 "/usr/include/time.h" 3 4
+# 1 "/usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h" 1 3 4
+
+
+
+
+
+
+
+struct itimerspec
+  {
+    struct timespec it_interval;
+    struct timespec it_value;
+  };
+# 49 "/usr/include/time.h" 2 3 4
+struct sigevent;
+# 60 "/usr/include/time.h" 3 4
+# 1 "/usr/include/x86_64-linux-gnu/bits/types/locale_t.h" 1 3 4
+# 22 "/usr/include/x86_64-linux-gnu/bits/types/locale_t.h" 3 4
+# 1 "/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h" 1 3 4
+# 27 "/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h" 3 4
+struct __locale_struct
+{
+
+  struct __locale_data *__locales[13];
+
+
+  const unsigned short int *__ctype_b;
+  const int *__ctype_tolower;
+  const int *__ctype_toupper;
+
+
+  const char *__names[13];
 };
 
+typedef struct __locale_struct *__locale_t;
+# 23 "/usr/include/x86_64-linux-gnu/bits/types/locale_t.h" 2 3 4
+
+typedef __locale_t locale_t;
+# 61 "/usr/include/time.h" 2 3 4
+
+
+
+
+
+
+
+
+
+
+
+extern clock_t clock (void) __attribute__ ((__nothrow__ , __leaf__));
+
+
+
+extern time_t time (time_t *__timer) __attribute__ ((__nothrow__ , __leaf__));
+
+
+extern double difftime (time_t __time1, time_t __time0)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
+
+
+extern time_t mktime (struct tm *__tp) __attribute__ ((__nothrow__ , __leaf__));
+# 100 "/usr/include/time.h" 3 4
+extern size_t strftime (char *__restrict __s, size_t __maxsize,
+   const char *__restrict __format,
+   const struct tm *__restrict __tp) __attribute__ ((__nothrow__ , __leaf__));
+# 116 "/usr/include/time.h" 3 4
+extern size_t strftime_l (char *__restrict __s, size_t __maxsize,
+     const char *__restrict __format,
+     const struct tm *__restrict __tp,
+     locale_t __loc) __attribute__ ((__nothrow__ , __leaf__));
+# 132 "/usr/include/time.h" 3 4
+extern struct tm *gmtime (const time_t *__timer) __attribute__ ((__nothrow__ , __leaf__));
+
+
+
+extern struct tm *localtime (const time_t *__timer) __attribute__ ((__nothrow__ , __leaf__));
+# 154 "/usr/include/time.h" 3 4
+extern struct tm *gmtime_r (const time_t *__restrict __timer,
+       struct tm *__restrict __tp) __attribute__ ((__nothrow__ , __leaf__));
+
+
+
+extern struct tm *localtime_r (const time_t *__restrict __timer,
+          struct tm *__restrict __tp) __attribute__ ((__nothrow__ , __leaf__));
+# 179 "/usr/include/time.h" 3 4
+extern char *asctime (const struct tm *__tp) __attribute__ ((__nothrow__ , __leaf__));
+
+
+
+extern char *ctime (const time_t *__timer) __attribute__ ((__nothrow__ , __leaf__));
+# 197 "/usr/include/time.h" 3 4
+extern char *asctime_r (const struct tm *__restrict __tp,
+   char *__restrict __buf) __attribute__ ((__nothrow__ , __leaf__));
+
+
+
+extern char *ctime_r (const time_t *__restrict __timer,
+        char *__restrict __buf) __attribute__ ((__nothrow__ , __leaf__));
+# 217 "/usr/include/time.h" 3 4
+extern char *__tzname[2];
+extern int __daylight;
+extern long int __timezone;
+
+
+
+
+extern char *tzname[2];
+
+
+
+extern void tzset (void) __attribute__ ((__nothrow__ , __leaf__));
+
+
+
+extern int daylight;
+extern long int timezone;
+# 249 "/usr/include/time.h" 3 4
+extern time_t timegm (struct tm *__tp) __attribute__ ((__nothrow__ , __leaf__));
+
+extern time_t timelocal (struct tm *__tp) __attribute__ ((__nothrow__ , __leaf__));
+# 262 "/usr/include/time.h" 3 4
+extern int dysize (int __year) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
+# 272 "/usr/include/time.h" 3 4
+extern int nanosleep (const struct timespec *__requested_time,
+        struct timespec *__remaining);
+
+
+extern int clock_getres (clockid_t __clock_id, struct timespec *__res) __attribute__ ((__nothrow__ , __leaf__));
+
+
+extern int clock_gettime (clockid_t __clock_id, struct timespec *__tp) __attribute__ ((__nothrow__ , __leaf__));
+
+
+extern int clock_settime (clockid_t __clock_id, const struct timespec *__tp)
+     __attribute__ ((__nothrow__ , __leaf__));
+# 311 "/usr/include/time.h" 3 4
+extern int clock_nanosleep (clockid_t __clock_id, int __flags,
+       const struct timespec *__req,
+       struct timespec *__rem);
+# 326 "/usr/include/time.h" 3 4
+extern int clock_getcpuclockid (pid_t __pid, clockid_t *__clock_id) __attribute__ ((__nothrow__ , __leaf__));
+
+
+
+
+extern int timer_create (clockid_t __clock_id,
+    struct sigevent *__restrict __evp,
+    timer_t *__restrict __timerid) __attribute__ ((__nothrow__ , __leaf__));
+
+
+extern int timer_delete (timer_t __timerid) __attribute__ ((__nothrow__ , __leaf__));
+
+
+
+extern int timer_settime (timer_t __timerid, int __flags,
+     const struct itimerspec *__restrict __value,
+     struct itimerspec *__restrict __ovalue) __attribute__ ((__nothrow__ , __leaf__));
+
+
+extern int timer_gettime (timer_t __timerid, struct itimerspec *__value)
+     __attribute__ ((__nothrow__ , __leaf__));
+# 364 "/usr/include/time.h" 3 4
+extern int timer_getoverrun (timer_t __timerid) __attribute__ ((__nothrow__ , __leaf__));
+
+
+
+
+
+
+extern int timespec_get (struct timespec *__ts, int __base)
+     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
+# 440 "/usr/include/time.h" 3 4
+
+# 5 "main.c" 2
+
+
+# 6 "main.c"
 int main(void)
 {
+ srand(time(
+# 8 "main.c" 3 4
+           ((void *)0)
+# 8 "main.c"
+               ));
+ double arrReal[10] = { 0.0 };
+    comp arrFunc[4] = { comparator1, comparator2, comparator3, comparator4 };
+ for (int i = 0; i < 10; i ++)
+ {
+  arrReal[i] = randReal(-10.0, 20.0);
+ }
  int userChoice = 0;
     int isScanned = 0;
+    printf("Choose between 1 and 4!\nYour choice: ");
     isScanned = scanf("%d", &userChoice);
-    while(getchar()!='\n');
-    while(!isScanned)
+    if(!isScanned || (userChoice < 1 || userChoice > 4))
     {
-        printf("You can choose between 1 and 6!\nYour choice: ");
-        isScanned = scanf("%d", &userChoice);
-        while(getchar()!='\n');
+        fprintf(
+# 21 "main.c" 3 4
+               stderr
+# 21 "main.c"
+                     , "Wrong choice!\nYou must choose between 1 and 4!\n");
+        exit(
+# 22 "main.c" 3 4
+            1
+# 22 "main.c"
+                        );
     }
- qsort(carArr, 10, sizeof(Car), getComparator(userChoice));
+ qsort(arrReal, 10, sizeof(arrReal[0]), arrFunc[userChoice - 1]);
  for (int i = 0; i < 10; i++)
  {
-  printf("Automobile %d:\n", i+1);
-  printf("Model: %s,\n", carArr[i].model);
-  printf("Max speed: %d,\n", carArr[i].maxSpeed);
-  printf("price: %.2lf.\n\n", carArr[i].price);
+  printf("%5.2lf\n", arrReal[i]);
  }
- return 0;
+    exit(
+# 29 "main.c" 3 4
+        0
+# 29 "main.c"
+                    );
 }

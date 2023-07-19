@@ -1,0 +1,23 @@
+//Compilation steps
+gcc -DCOUNT=10 -DMIN=-5 -DMAX=20 -E main.c -o main.i //Preprocessor with macro definitions
+gcc -S main.i -o main.s //Compiler to assembly code
+gcc -c main.s -o main.o //Compiler from assembly to object code
+
+gcc -E comparators.c -o comparators.i //Preprocessor
+gcc -S comparators.i -o comparators.s //Compiler to assembly code
+gcc -c comparators.s -o comparators.o //Compiler from assembly to object code
+
+gcc main.o comparators.o -o task2 // Linker links all files and static libraries to executable file
+./task2 //Run the program
+
+//Create static library
+gcc -c comparators.c -o comparators.o //Compile .c-file of the library to object file
+ar rcs libcomparators.a -o comparators.o //Arhive the files like a library files
+gcc -DCOUNT=10 -DMIN=-5 -DMAX=20 main.c -o task2 -L. -lcomparators //Compile the main file of the program and link static library 'comparators' to executable file 'task2'
+./task2 //Run the program
+
+//Create dynamic library
+gcc -shared comparators.c -o libcomparators.so //Compile .c-file of the library to shared object file
+export LD_LIBRARY_PATH=. //Make environment variable to keep path to the library
+gcc -DCOUNT=10 -DMIN=-5 -DMAX=20 main.c -o task2 -L. -lcomparators //Compile the main file of the program and link dynamic library 'comparators' to executable file 'task2'
+./task2 //Run the program

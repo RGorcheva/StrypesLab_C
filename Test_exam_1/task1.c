@@ -1,77 +1,53 @@
 #include <stdio.h>
-#include <inttypes.h>
+#include <inttypes.h>//stdint.h
 #include <string.h>
 #include <math.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define EPS 0.0001
+#define COUNT 10
 
 typedef struct{
-	char model[20];
+	char model[21];
 	uint8_t maxSpeed;
 	double price;
 }Car;
 
-Car carArr[10] =
+//rand int
+int randInt(int min, int max)
 {
-	{
-		.model = "Mazda2",
-		.maxSpeed = 150,
-		.price = 35000.0
-	},
-	{
-		.model = "Mazda6",
-		.maxSpeed = 200,
-		.price = 65000.0
-	},
-	{
-		.model = "Opel corsa",
-		.maxSpeed = 145,
-		.price = 15000.0
-	},	
-		{
-		.model = "Toyota Yaris",
-		.maxSpeed = 180,
-		.price = 12000.0
-	},
-	{
-		.model = "Renault Laguna",
-		.maxSpeed = 185,
-		.price = 75000.0
-	},
-	{
-		.model = "Mercedes Benz",
-		.maxSpeed = 215,
-		.price = 100000.0
-	},
-	{
-		.model = "BMW 3",
-		.maxSpeed = 200,
-		.price = 17000.0
-	},
-	{
-		.model = "Ferrari",
-		.maxSpeed = 220,
-		.price = 99000.0
-	},
-	{
-		.model = "Citroen C3",
-		.maxSpeed = 145,
-		.price = 35000.0
-	},
-	{
-		.model = "Hunday",
-		.maxSpeed = 150,
-		.price = 60000.0
-	}
-};
+	return min + rand() % (max - min + 1);
+}
 
-int modelAcs(const void* a, const void* b);
-int modelDecs(const void* a, const void* b);
-int speedAcs(const void* a, const void* b);
-int speedDecs(const void* a, const void* b);
-int priceAcs(const void* a, const void* b);
-int priceDecs(const void* a, const void* b);
+double randReal(double min, double max)
+{
+	return min + (double)rand() / RAND_MAX * (max - min);
+}
+
+char randSym(int isUpper)
+{
+	if (isUpper)
+	{
+		return 'A' + rand() % ('Z' - 'A' + 1);
+	}
+	else
+	{
+		return 'a' + rand() % ('Z' - 'A' + 1);
+	}
+}
+
+char* randModel(char* str)
+{
+	str[0] = randSym(1);
+	int numberOfLetters = randInt(5, 11);
+	for (int i = 1; i < numberOfLetters; i++)
+	{
+		str[i] = randSym(0);
+	}
+	str[numberOfLetters] = '\0';
+	return str;
+}
 
 int modelAcs(const void* a, const void* b)
 {
@@ -131,6 +107,14 @@ comp getComparator(int n)
 	
 int main(void)
 {
+	srand(time(NULL));
+	Car carArr[COUNT];
+	for (int i  = 0; i < COUNT; i ++)
+	{
+		randModel(carArr[i].model);
+		carArr[i].maxSpeed = randInt(100, 255);
+		carArr[i].price = randReal(1000.0, 100000.0);
+	} 
 	int userChoice = 0;
     int isScanned = 0;
     isScanned = scanf("%d", &userChoice);
@@ -141,13 +125,12 @@ int main(void)
         isScanned = scanf("%d", &userChoice);
         while(getchar()!='\n');
     }
-	qsort(carArr, 10, sizeof(Car), getComparator(userChoice));
+	qsort(carArr, COUNT, sizeof(Car), getComparator(userChoice));
 	for (int i = 0; i < 10; i++)
 	{
-		printf("Automobile %d:\n", i+1);
-		printf("Model: %s,\n", carArr[i].model);
-		printf("Max speed: %d,\n", carArr[i].maxSpeed);
-		printf("price: %.2lf.\n\n", carArr[i].price);
+		printf("%11s", carArr[i].model);
+		printf("%5d ", carArr[i].maxSpeed);
+		printf("%7.2lf\n", carArr[i].price);
 	}
 	return 0;
 }
